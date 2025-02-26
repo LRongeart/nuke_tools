@@ -1,0 +1,890 @@
+#! C:/Program Files/Nuke15.0v4/nuke-15.0.4.dll -nx
+version 15.0 v4
+Gizmo {
+ inputs 2
+ tile_color 0x55ffffff
+ note_font "Verdana Bold Italic"
+ note_font_color 0xff0000ff
+ addUserKnob {20 User l Layers}
+ addUserKnob {68 Output_1 l Output M {COLOR SCALAR}}
+ Output_1 SCALAR
+ addUserKnob {6 ViewLayerMask +STARTLINE}
+ addUserKnob {6 ViewLayerMaskText -STARTLINE}
+ ViewLayerMaskText true
+ addUserKnob {26 ""}
+ addUserKnob {26 LayerMixer l "" +STARTLINE T LayerMixer}
+ addUserKnob {41 mix_6 l GeneralMix T Merge12.mix}
+ addUserKnob {6 enable_medianTones +STARTLINE}
+ enable_medianTones true
+ addUserKnob {6 enable_shadows -STARTLINE}
+ enable_shadows true
+ addUserKnob {6 enable_lowTones +STARTLINE}
+ enable_lowTones true
+ addUserKnob {6 enable_midTones -STARTLINE}
+ enable_midTones true
+ addUserKnob {6 enable_highTones -STARTLINE}
+ enable_highTones true
+ addUserKnob {26 ""}
+ addUserKnob {41 mix_5 l Soften_ShaderLuminance_Intensity T Merge1.mix}
+ addUserKnob {41 size l Soften_ShaderLuminance_Radius T Soften1.size}
+ addUserKnob {26 ""}
+ addUserKnob {20 medianTones l medianTones_Parameters n 1}
+ medianTones 0
+ addUserKnob {41 mix l ShaderLuminanceMix T Merge8.mix}
+ addUserKnob {41 color_3 l color_medianTones T Constant5.color}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {20 shadows_Parameters n 1}
+ addUserKnob {41 mix_1 l ShaderLuminanceMix T Merge7.mix}
+ addUserKnob {41 color l color_shadows T Constant4.color}
+ addUserKnob {41 range l range_shadows -STARTLINE T Keyer6.range}
+ addUserKnob {20 endGroup_1 n -1}
+ addUserKnob {26 ""}
+ addUserKnob {20 lowTones_Parameters n 1}
+ addUserKnob {41 mix_2 l ShaderLuminanceMix T Merge9.mix}
+ addUserKnob {41 color_1 l color_lowTones T Constant3.color}
+ addUserKnob {41 range_1 l range_lowTones -STARTLINE T Keyer5.range}
+ addUserKnob {20 endGroup_2 n -1}
+ addUserKnob {26 ""}
+ addUserKnob {20 midTones_Parameters n 1}
+ midTones_Parameters 0
+ addUserKnob {41 mix_3 l ShaderLuminanceMix T Merge10.mix}
+ addUserKnob {41 color_2 l color_midTones T Constant1.color}
+ addUserKnob {41 range_2 l range_midTones -STARTLINE T Keyer3.range}
+ addUserKnob {20 endGroup_3 n -1}
+ addUserKnob {26 ""}
+ addUserKnob {20 highTones_Parameters n 1}
+ highTones_Parameters 0
+ addUserKnob {41 mix_4 l ShaderLuminanceMix T Merge11.mix}
+ addUserKnob {41 color_4 l color_highTones T Constant2.color}
+ addUserKnob {41 range_3 l range_highTones -STARTLINE T Keyer4.range}
+ addUserKnob {20 endGroup_4 n -1}
+ addUserKnob {26 ""}
+ addUserKnob {20 Pattern}
+ addUserKnob {68 PatternInput M {None "PATTERN Input"}}
+ PatternInput "PATTERN Input"
+ addUserKnob {68 PatternChannel M {Red Alpha}}
+ addUserKnob {26 ""}
+ addUserKnob {41 mix_10 l PatternIntensityMix T Merge19.mix}
+ addUserKnob {26 ""}
+ addUserKnob {41 blackpoint_2 l blackpoint T Grade6.blackpoint}
+ addUserKnob {41 whitepoint_2 l whitepoint T Grade6.whitepoint}
+ addUserKnob {41 multiply_2 l multiply T Grade6.multiply}
+ addUserKnob {41 add_2 l offset T Grade6.add}
+ addUserKnob {41 gamma_2 l gamma T Grade6.gamma}
+ addUserKnob {41 black_clamp_2 l "black clamp" T Grade6.black_clamp}
+ addUserKnob {41 white_clamp_2 l "white clamp" T Grade6.white_clamp}
+ addUserKnob {41 mix_9 l mix T Grade6.mix}
+ addUserKnob {20 Input}
+ addUserKnob {41 blackpoint T Grade2.blackpoint}
+ addUserKnob {41 whitepoint T Grade2.whitepoint}
+ addUserKnob {41 black l lift T Grade2.black}
+ addUserKnob {41 white l gain T Grade2.white}
+ addUserKnob {41 multiply T Grade2.multiply}
+ addUserKnob {41 add l offset T Grade2.add}
+ addUserKnob {41 gamma T Grade2.gamma}
+ addUserKnob {41 black_clamp_1 l "black clamp" T Grade2.black_clamp}
+ addUserKnob {41 white_clamp_1 l "white clamp" T Grade2.white_clamp}
+ addUserKnob {41 mix_7 l mix T Grade2.mix}
+ addUserKnob {20 Output}
+ addUserKnob {41 blackpoint_1 l blackpoint T Grade4.blackpoint}
+ addUserKnob {41 whitepoint_1 l whitepoint T Grade4.whitepoint}
+ addUserKnob {41 black_1 l lift T Grade4.black}
+ addUserKnob {41 white_1 l gain T Grade4.white}
+ addUserKnob {41 multiply_1 l multiply T Grade4.multiply}
+ addUserKnob {41 add_1 l offset T Grade4.add}
+ addUserKnob {41 gamma_1 l gamma T Grade4.gamma}
+ addUserKnob {41 black_clamp l "black clamp" T Grade4.black_clamp}
+ addUserKnob {41 white_clamp l "white clamp" T Grade4.white_clamp}
+ addUserKnob {41 mix_8 l mix T Grade4.mix}
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0xaaaaaa00
+  label PATTERN
+  note_font_size 42
+  xpos 814
+  ypos 316
+  appearance Border
+  bdwidth 262
+  bdheight 300
+ }
+ Input {
+  inputs 0
+  name PATTERN
+  xpos 906
+  ypos 385
+  number 1
+ }
+ Dot {
+  name Dot13
+  xpos 934
+  ypos 409
+ }
+ Saturation {
+  name Saturation3
+  xpos 906
+  ypos 454
+ }
+set N60c7d400 [stack 0]
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 rgba.red 0 0 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.red 0 0 rgba.blue 0 2 rgba.red 0 0 rgba.alpha 0 3"
+  name Shuffle1
+  label "\[value in1]"
+  note_font_color 0x3fffff
+  xpos 824
+  ypos 502
+ }
+push $N60c7d400
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 rgba.alpha 0 3 rgba.alpha 0 3 rgba.alpha 0 3 rgba.red 0 0 rgba.alpha 0 3 rgba.green 0 1 rgba.alpha 0 3 rgba.blue 0 2"
+  name Shuffle2
+  label "\[value in1]"
+  note_font_color 0x3fffff
+  xpos 988
+  ypos 502
+ }
+ Switch {
+  inputs 2
+  which {{"\[if \{\[value parent.PatternChannel]==\"Red\"\} \{return \"1\"\} \{return \"0\"\}]"}}
+  name Switch2
+  label "\[value which]"
+  xpos 908
+  ypos 544
+ }
+ Grade {
+  whitepoint 0.27
+  gamma 0.685
+  white_clamp true
+  name Grade6
+  xpos 908
+  ypos 580
+ }
+ Dot {
+  name Dot14
+  xpos 936
+  ypos 640
+ }
+set N60c7c000 [stack 0]
+ Input {
+  inputs 0
+  name RGB
+  xpos -395
+  ypos 498
+ }
+ Dot {
+  name Dot73
+  xpos -367
+  ypos 538
+ }
+set N60c41800 [stack 0]
+ Grade {
+  white 0.325
+  name Grade2
+  xpos -395
+  ypos 594
+ }
+ Saturation {
+  saturation 0
+  name Saturation1
+  xpos -395
+  ypos 676
+ }
+ Dot {
+  name Dot64
+  xpos -367
+  ypos 714
+ }
+set N60c40c00 [stack 0]
+ Colorspace {
+  colorspace_in YPbPr
+  colorspace_out sRGB
+  name Colorspace1
+  xpos 1262
+  ypos 717
+ }
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 rgba.alpha 0 3 rgba.alpha 0 3 rgba.blue 0 2 rgba.red 0 0 rgba.blue 0 2 rgba.green 0 1 rgba.blue 0 2 rgba.blue 0 2"
+  name Shuffle21
+  label "\[value in1]"
+  note_font_color 0x3fffff
+  xpos 1262
+  ypos 741
+ }
+ Grade {
+  white 0.395
+  gamma 0.9
+  name Grade3
+  xpos 1262
+  ypos 777
+ }
+ Dot {
+  name Dot70
+  xpos 1290
+  ypos 959
+ }
+set N60c03c00 [stack 0]
+ Merge2 {
+  inputs 2
+  operation overlay
+  mix 0.088
+  name Merge19
+  xpos 908
+  ypos 962
+  disable {{"1-\[if \{\[value parent.PatternInput]==\"PATTERN Input\"\} \{return \"1\"\} \{return \"0\"\}]"}}
+ }
+ set C60c03800 [stack 0]
+set N60c03800 [stack 0]
+ Dot {
+  name Dot1
+  xpos 110
+  ypos 959
+ }
+set N60c03400 [stack 0]
+ Expression {
+  expr0 1
+  expr1 1
+  expr2 1
+  expr3 1
+  name Expression1
+  xpos -27
+  ypos 893
+  disable true
+ }
+ Expression {
+  inputs 0
+  name Expression2
+  xpos 126
+  ypos 1072
+ }
+push $N60c7c000
+push $N60c03c00
+ Dot {
+  name Dot11
+  xpos 1290
+  ypos 1105
+ }
+set N60c02800 [stack 0]
+ Dot {
+  name Dot68
+  xpos 1290
+  ypos 1187
+ }
+set N60c02400 [stack 0]
+ Dot {
+  name Dot67
+  xpos 1290
+  ypos 1263
+ }
+set N60c02000 [stack 0]
+ Dot {
+  name Dot65
+  xpos 1290
+  ypos 1390
+ }
+set N60bd9c00 [stack 0]
+ Dot {
+  name Dot66
+  xpos 1290
+  ypos 1572
+ }
+set N60bd9800 [stack 0]
+clone $C60c03800 {
+  inputs 2
+  xpos 908
+  ypos 1575
+  selected false
+ }
+ Keyer {
+  operation "luminance key"
+  range {0.3177004567 0.453251339 1 1}
+  name Keyer4
+  xpos 125
+  ypos 1569
+ }
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 rgba.alpha 0 3 rgba.alpha 0 3 rgba.alpha 0 3 rgba.red 0 0 rgba.alpha 0 3 rgba.green 0 1 rgba.alpha 0 3 rgba.blue 0 2"
+  name Shuffle23
+  label "\[value in1]"
+  note_font_color 0x3fffff
+  xpos 33
+  ypos 1569
+ }
+ Gamma {
+  value 0.97
+  name Gamma4
+  xpos -70
+  ypos 1565
+ }
+ Soften {
+  name Soften5
+  xpos -192
+  ypos 1565
+ }
+set N60bd8400 [stack 0]
+ Dot {
+  name Dot7
+  xpos -167
+  ypos 2148
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {1 1 1 0}
+  color_panelDropped true
+  name Constant9
+  xpos 1152
+  ypos 2127
+ }
+push $N60c7c000
+push $N60bd9c00
+clone $C60c03800 {
+  inputs 2
+  xpos 908
+  ypos 1393
+  selected false
+ }
+ Clamp {
+  maximum 0.106
+  name Clamp1
+  xpos 227
+  ypos 1387
+ }
+ Keyer {
+  operation "luminance key"
+  range {0.06179599896 0.1481397231 0.2734426113 0.4216125763}
+  name Keyer3
+  xpos 125
+  ypos 1387
+ }
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 rgba.alpha 0 3 rgba.alpha 0 3 rgba.alpha 0 3 rgba.red 0 0 rgba.alpha 0 3 rgba.green 0 1 rgba.alpha 0 3 rgba.blue 0 2"
+  name Shuffle22
+  label "\[value in1]"
+  note_font_color 0x3fffff
+  xpos 29
+  ypos 1387
+ }
+ Gamma {
+  value 1.1
+  name Gamma3
+  xpos -74
+  ypos 1387
+ }
+ Soften {
+  name Soften4
+  xpos -195
+  ypos 1387
+ }
+set N60b90400 [stack 0]
+ Dot {
+  name Dot6
+  xpos -167
+  ypos 2057
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0 0 1 0}
+  color_panelDropped true
+  name Constant8
+  xpos 1152
+  ypos 2036
+ }
+push $N60c7c000
+push $N60c02000
+clone $C60c03800 {
+  inputs 2
+  xpos 908
+  ypos 1266
+  selected false
+ }
+ Keyer {
+  operation "luminance key"
+  range {0.01523247579 0.07546645554 0.1152604663 0.2008440462}
+  name Keyer5
+  xpos 130
+  ypos 1260
+ }
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 rgba.alpha 0 3 rgba.alpha 0 3 rgba.alpha 0 3 rgba.red 0 0 rgba.alpha 0 3 rgba.green 0 1 rgba.alpha 0 3 rgba.blue 0 2"
+  name Shuffle25
+  label "\[value in1]"
+  note_font_color 0x3fffff
+  xpos 37
+  ypos 1260
+ }
+ Gamma {
+  value 3.56
+  name Gamma2
+  xpos -73
+  ypos 1260
+ }
+ Soften {
+  name Soften3
+  xpos -196
+  ypos 1260
+ }
+set N49ef800 [stack 0]
+ Dot {
+  name Dot5
+  xpos -168
+  ypos 1955
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0 1 0 0}
+  color_panelDropped true
+  name Constant7
+  xpos 1152
+  ypos 1934
+ }
+push $N60c7c000
+push $N60c02400
+clone $C60c03800 {
+  inputs 2
+  xpos 908
+  ypos 1190
+  selected false
+ }
+ Keyer {
+  operation "luminance key"
+  range {0 0 0.1357434045 1}
+  name Keyer6
+  xpos 129
+  ypos 1184
+ }
+ Soften {
+  name Soften2
+  xpos -196
+  ypos 1184
+ }
+set N5552e800 [stack 0]
+ Dot {
+  name Dot4
+  xpos -168
+  ypos 1852
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {1 0 0 0}
+  color_panelDropped true
+  name Constant6
+  xpos 1152
+  ypos 1831
+ }
+push $N60c7c000
+push $N60c02800
+clone $C60c03800 {
+  inputs 2
+  xpos 908
+  ypos 1108
+  selected false
+ }
+ Keyer {
+  operation "max keyer"
+  range {0 0.4234804677 1 1}
+  name Keyer1
+  xpos 128
+  ypos 1102
+ }
+ Grade {
+  channels rgba
+  multiply 4
+  gamma 5
+  name Grade5
+  xpos 18
+  ypos 1108
+ }
+ Clamp {
+  name Clamp2
+  xpos -196
+  ypos 1102
+ }
+set N5542d800 [stack 0]
+ Dot {
+  name Dot12
+  xpos -168
+  ypos 1745
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {1 1 0 0}
+  color_panelDropped true
+  name Constant10
+  xpos 1152
+  ypos 1724
+ }
+push $N60bd9800
+ Merge2 {
+  inputs 2+1
+  operation copy
+  name Merge18
+  xpos 1262
+  ypos 1748
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  name Merge13
+  xpos 1262
+  ypos 1855
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  name Merge14
+  xpos 1262
+  ypos 1958
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  name Merge15
+  xpos 1262
+  ypos 2060
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  name Merge16
+  xpos 1262
+  ypos 2151
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "YELLOW = median\nRED = shadows\nGREEN = lowTones\nBLUE = midTones\nWHITE = highTones"
+  old_message {{89 69 76 76 79 87 32 61 32 109 101 100 105 97 110 10 82 69 68 32 61 32 115 104 97 100 111 119 115 10 71 82 69 69 78 32 61 32 108 111 119 84 111 110 101 115 10 66 76 85 69 32 61 32 109 105 100 84 111 110 101 115 10 87 72 73 84 69 32 61 32 104 105 103 104 84 111 110 101 115}
+    }
+  box {0 10 {width} {height}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 80
+  global_font_scale 0.445
+  center {1024 778}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 1706}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  color {1 1 1 1}
+  color_panelDropped true
+  enable_background true
+  name Text1
+  xpos 1262
+  ypos 2265
+  disable {{1-parent.ViewLayerMaskText}}
+ }
+ Dot {
+  name Dot8
+  xpos 1290
+  ypos 2785
+ }
+push $N60c41800
+ Dot {
+  name Dot3
+  xpos -698
+  ypos 538
+ }
+ Dot {
+  name Dot2
+  xpos -698
+  ypos 2604
+ }
+set N5587ac00 [stack 0]
+ Dot {
+  name Dot15
+  selected true
+  xpos -698
+  ypos 2695
+ }
+push $N60bd8400
+push $N60c03400
+push $N60c03400
+ Soften {
+  amount 1
+  size 2000
+  name Soften1
+  xpos 83
+  ypos 1019
+ }
+set N5587a400 [stack 0]
+push $N5587a400
+ Keymix {
+  inputs 3
+  name Keymix1
+  xpos -27
+  ypos 1019
+ }
+push $N60c03400
+ Merge2 {
+  inputs 2
+  mix 0
+  name Merge1
+  xpos -27
+  ypos 962
+ }
+ Dot {
+  name Dot72
+  xpos -465
+  ypos 959
+ }
+set N55845800 [stack 0]
+ Constant {
+  inputs 0
+  channels rgb
+  color {1.283876 1.132401 0.374965 1}
+  color_panelDropped true
+  name Constant2
+  xpos -602
+  ypos 1551
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  mix 0.65
+  name Merge11
+  xpos -493
+  ypos 1575
+ }
+push $N60b90400
+push $N55845800
+ Constant {
+  inputs 0
+  channels rgb
+  color {1.432239 0.527525 0.956739 1}
+  color_panelDropped true
+  name Constant1
+  xpos -603
+  ypos 1369
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  mix 0.65
+  name Merge10
+  xpos -493
+  ypos 1393
+ }
+push $N49ef800
+push $N55845800
+ Constant {
+  inputs 0
+  channels rgb
+  color {-0.18249 0.443475 -0.170985 1}
+  color_panelDropped true
+  name Constant3
+  xpos -603
+  ypos 1242
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  mix 0.65
+  name Merge9
+  xpos -493
+  ypos 1266
+ }
+push $N5552e800
+push $N55845800
+ Constant {
+  inputs 0
+  channels rgb
+  color {-0.513333 0.336667 0.386667 1}
+  color_panelDropped true
+  name Constant4
+  xpos -603
+  ypos 1166
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  mix 0.65
+  name Merge7
+  xpos -493
+  ypos 1190
+ }
+set N55813800 [stack 0]
+push $N5542d800
+push $N55845800
+ Constant {
+  inputs 0
+  channels rgb
+  color {0.890744 0.367647 0.254505 0}
+  color_panelDropped true
+  name Constant5
+  xpos -603
+  ypos 1084
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  mix 0.65
+  name Merge8
+  xpos -493
+  ypos 1108
+ }
+push $N55813800
+ Dot {
+  name Dot9
+  xpos -519
+  ypos 1148
+ }
+ Dot {
+  name Dot10
+  xpos -519
+  ypos 1034
+ }
+push $N60c40c00
+ Expression {
+  expr0 0
+  expr1 0
+  expr2 0
+  expr3 a
+  name Expression7
+  xpos -395
+  ypos 812
+ }
+ Merge2 {
+  inputs 2
+  name Merge17
+  xpos -395
+  ypos 1037
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  name Merge6
+  xpos -395
+  ypos 1108
+  disable {{1-parent.enable_medianTones x5 1}}
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  Achannels rgb
+  Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  output {rgba.red rgba.green rgba.blue -rgba.alpha}
+  name Merge5
+  xpos -395
+  ypos 1190
+  disable {{1-parent.enable_shadows}}
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  Achannels rgb
+  Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  output {rgba.red rgba.green rgba.blue -rgba.alpha}
+  name Merge4
+  xpos -395
+  ypos 1266
+  disable {{1-parent.enable_lowTones}}
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  output {rgba.red rgba.green rgba.blue -rgba.alpha}
+  name Merge2
+  xpos -395
+  ypos 1393
+  disable {{1-parent.enable_midTones}}
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  output {rgba.red rgba.green rgba.blue -rgba.alpha}
+  name Merge3
+  xpos -395
+  ypos 1575
+  disable {{1-parent.enable_highTones}}
+ }
+ ColorCorrect {
+  name ColorCorrect1
+  xpos -395
+  ypos 1678
+ }
+ Grade {
+  name Grade1
+  xpos -395
+  ypos 1722
+ }
+ Grade {
+  name Grade4
+  xpos -395
+  ypos 2515
+ }
+ Saturation {
+  saturation {{"\[if \{\[value parent.Output_1]==\"SCALAR\"\} \{return \"0\"\} \{return \"1\"\}]"}}
+  name Saturation2
+  xpos -395
+  ypos 2557
+ }
+push $N5587ac00
+ Merge2 {
+  inputs 2
+  operation copy
+  name Merge12
+  xpos -395
+  ypos 2607
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy1
+  note_font_color 0x3fffff
+  selected true
+  xpos -395
+  ypos 2692
+ }
+ Switch {
+  inputs 2
+  which 1
+  name Switch1
+  label "\[value which]"
+  xpos -395
+  ypos 2782
+  disable {{1-parent.ViewLayerMask}}
+ }
+ Output {
+  name Output1
+  xpos -395
+  ypos 2880
+ }
+push $N60c03800
+ Viewer {
+  frame_range 1-150
+  viewerProcess "sRGB (ACES)"
+  monitorOutNDISenderName "NukeX - testProjection - Viewer1"
+  name Viewer1
+  xpos -49
+  ypos 1075
+ }
+end_group
